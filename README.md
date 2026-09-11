@@ -45,30 +45,26 @@ PyVista / ParaView Post-processing
 The GUI is organised into functional modules that communicate through a central FEM model.
 
 ```text
-                     ┌─────────────────┐
-                     │   PyQt6 GUI     │
-                     │   Main Window   │
-                     └────────┬────────┘
-                              │
-        ┌─────────────────────┼─────────────────────┐
-        ↓                     ↓                     ↓
-  Geometry Module      Materials Module     BC / Load Module
-        \                     |                     /
-         \                    |                    /
-          └───────────────────┼───────────────────┘
-                              ↓
-                       ┌─────────────┐
-                       │  FEMModel   │
-                       └──────┬──────┘
-                              │
-             ┌────────────────┼────────────────┐
-             ↓                ↓                ↓
-       Gmsh Meshing     Input Writer     Post-processing
-             ↓                ↓                ↓
-          Mesh data       input.txt        input.vtu
-                              ↓
-                   Existing Fortran Solver
-```
+PyQt6 GUI
+    │
+    ▼
+Functional Modules
+    │
+    ▼
+FEMModel
+    │
+    ├── Geometry & Meshing
+    │
+    ├── Input Writer
+    │
+    └── Post-processing
+          │
+          ▼
+     VTU Results
+          │
+          ▼
+   ParaView Visualisation
+
 
 ## Repository structure
 
